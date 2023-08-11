@@ -1,2 +1,2 @@
 print("SAsa")
-print("sadsdadaa")
+print("sadsdaa")
