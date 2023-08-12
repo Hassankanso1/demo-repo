@@ -1,0 +1,133 @@
+
+#1
+def reverse(text,i):
+    reversed_text=""
+    for index in range (len(text)-1,-1,-1):
+        reversed_text+=text[index]
+    result=""
+    for index in range(i):
+        result+=reversed_text
+    print(result)
+    
+user=input("Enter a Character: ")
+repetitions=(int(input("Enter a number: ")))
+output=reverse(user,repetitions)
+
+
+
+#2
+def rearrange(text):
+    upper_case = ""
+    lower_case = ""
+    
+    for i in text:
+        if i.isupper():
+            upper_case += i
+        else:
+            lower_case += i
+            
+    return upper_case + lower_case
+
+username=input("Enter anything: ")
+result = rearrange(username)
+print(result) 
+
+#3
+def reordering(s1,s2):
+    if sorted(s1)==sorted(s2):
+        return True
+    else:
+        return False
+user1=input("Enter Something: ")
+user2=input("Enter Soemthing: ")
+result=reordering(user1,user2)   
+print(result)
+
+#4
+def maximum(number):
+    value=number[0]
+    at_index= 0
+    for i in range(0,len(number)):
+        if number[i]>value:
+            value=number[i]
+            at_index=i
+    return value,at_index
+I=[17,52,129,73,60,1105,654,159]
+value,at_index=maximum(I)
+print("The highest Value in the list I is",value,"at index",at_index)
+
+#BONUS
+def minimum(number):
+    value=number[0]
+    at_index= 0
+    for i in range(0,len(number)):
+        if number[i]<value:
+            value=number[i]
+            at_index=i
+    return value,at_index
+I=[17,52,129,73,60,1105,654,159]
+value,at_index=minimum(I)
+print("The lowest Value in the list I is",value,"at index",at_index)
+
+#5
+def recursive_count(i):
+    if i != 0:
+        return 1 + recursive_count(i//10)
+    else:
+        return 0
+user=int(input("Enter any numbers: "))
+result=recursive_count(user)
+print(result)
+
+
+#6
+def list_jumps(i):
+    index=0
+    k=set()
+    while index >=0 and index<len(i):
+        if index in k:
+            return "cycle"
+        k.add(index)
+        index +=i[index]
+    return "out-of-bounds"
+list1=[2,-1,1,2,1]
+list2=[5,6,-2,4,1]
+print(list_jumps(list1))
+print(list_jumps(list2))
+
+#pos
+def calculate_item_total(quantity, unit_price):
+    return quantity * unit_price
+
+def print_receipt(items):
+    total_amount = 0
+    print("Receipt:")
+    for barcode, item_name, quantity, unit_price in items:
+        item_total = calculate_item_total(quantity, unit_price)
+        print(f"{item_name} x {quantity} = {item_total:.2f}")
+        total_amount += item_total
+    print("Total: {:.2f}".format(total_amount))
+    print()
+
+def pos_system():
+    while True:
+        start_receipt = input("Start a new receipt? (yes/no): ").lower()
+        if start_receipt == "no":
+            print("Goodbye!")
+            break
+        elif start_receipt == "yes":
+            items = []
+            while True:
+                barcode = input("Enter the item barcode (or 'no' to finish the receipt): ")
+                if barcode.lower() == "no":
+                    break
+                item_name = input("Enter the item name: ")
+                quantity = int(input("Enter the quantity purchased: "))
+                unit_price = float(input("Enter the unit price: "))
+                items.append((barcode, item_name, quantity, unit_price))
+            print_receipt(items)
+
+pos_system()
+
+
+
